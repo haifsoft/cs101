@@ -1,1 +1,1 @@
-# cs101
+This is practice project for learning

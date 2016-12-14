@@ -49,5 +49,25 @@ def crawl_web(seed):
             crawled.append(page)
     
     return crawled
+
+def add_to_index(index, keyword, url):
+    for entry in index:
+        if entry[0] == keyword:
+            entry[1].append(url)
+            return
+    index.append([keyword, [url]])
+
+def lookup(index, word):
+    for entry in index:
+        if entry[0] == word:
+            return entry[1]
+    return []
+
+def add_page_to_index(index, url, content):
+    words = content.split()
+    for word in words:
+        add_to_index(index, word, url)
+
+
 if __name__ == '__main__':
     print crawl_web("http://xkcd.com/353")
